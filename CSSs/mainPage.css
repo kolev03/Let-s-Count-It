@@ -1,0 +1,337 @@
+.mainPage {
+  background-color: orange;
+  width: 100%;
+  height: 100vh;
+}
+
+header {
+  background-color: orange;
+  padding: 1rem;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.user-icon {
+  width: 70px;
+  height: 70px;
+  transition: 0.3s ease;
+}
+
+.user-icon:hover {
+  cursor: pointer;
+  width: 90px;
+  height: 90px;
+}
+
+.user-icon::after {
+  content: "Your Text Here";
+  opacity: 0;
+}
+
+.user-icon:hover::after {
+  opacity: 1; /* Show text on hover */
+}
+
+.mainPage h1 {
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin: 0; /* Remove extra margin */
+  color: white;
+  text-shadow: 4px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.accountName {
+  font-size: 3.5rem;
+  transition: 0.3s ease;
+}
+
+.accountName:hover {
+  font-size: 3.75rem;
+  transition: 0.3s ease;
+}
+
+.mainPage-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 36px;
+  padding: 16px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mainSec {
+  width: 30%;
+  min-width: 430px;
+  height: 700px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+}
+
+.right-section {
+  width: 65%;
+}
+
+.right-section h1 {
+  color: black;
+}
+
+/* ------------------------ */
+#intakeTracker {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  max-width: 400px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.calorie-progress {
+  display: flex;
+  align-items: center;
+}
+
+.circle-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  flex: 1;
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: conic-gradient(orange 0% 0%, #eaeaea 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.calorie-info {
+  flex: 1;
+  margin-top: -2rem;
+}
+
+.nutrient {
+  text-align: center;
+  width: 100%;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #eaeaea;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progress {
+  height: 100%;
+  background-color: orange;
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
+
+.control-meals {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+}
+
+.control-meals button {
+  background-color: transparent;
+  font-size: 2rem;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-weight: 600;
+  font-optical-sizing: auto;
+  color: rgb(246, 160, 31);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: font-size 0.3s ease;
+}
+
+.control-meals button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: rgb(246, 160, 31);
+  transition: width 0.3s ease;
+  border-radius: 50%;
+}
+
+.control-meals button:hover {
+  font-size: 2.25rem;
+}
+
+.control-meals button:hover::after {
+  width: 100%;
+}
+
+.meal {
+  background-color: bisque;
+  width: 100%;
+  height: auto;
+}
+
+.show-meals-consumed, .list-of-meals {
+  max-height: 570px;
+  overflow-y: auto;
+}
+
+.list-of-meals {
+  max-height: 460px;
+  overflow-y: auto;
+}
+
+.show-meals h3 {
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.remove-meal-from-list {
+  cursor: pointer;
+  color: red;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+
+.show-meals .top-container {
+  display: flex;
+  justify-content: space-between;
+}
+.meal .bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.meal-img {
+  width: 75px;
+  height: 75px;
+  background-color: rgb(255, 88, 88);
+  border-radius: 100%;
+  margin: 1rem;
+}
+
+.list-of-meals .meal-img {
+  width: 125px;
+  height: 125px;
+  background-color: rgb(241, 58, 58);
+  border-radius: 100%;
+  margin: 1rem;
+}
+
+.meal-nutrion-info {
+  margin-left: 2rem;
+}
+
+.detailed-div {
+  background: linear-gradient(orange, rgb(255, 206, 116))
+}
+
+.list-of-meals {
+
+  width: 100%;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Four columns of equal width */
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.meal-choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.meal-choice .meal-img {
+  text-align: center;
+}
+
+.meal-choice:hover {
+  cursor: pointer;
+}
+
+.meal-list-name {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: auto;
+  font-style: italic;
+  margin-top: -1rem;
+}
+
+#close-list-of-meals{
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-weight: 600;
+  font-optical-sizing: auto;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 1rem;
+  width: fit-content;
+  margin: 0 auto;
+  transition: 0.3s ease;
+}
+
+#close-list-of-meals:hover{
+  font-size: 1.7rem;
+  transition: 0.3s ease;
+}
+
+.register-new-food {
+  width: fit-content;
+  height: fit-content;
+  background-color: antiquewhite;
+  margin: 0 auto;
+}
+
+.register-block{
+  display: flex;
+  align-items: center;
+}
+
+.register-new-food p{
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-weight: 600;
+  font-optical-sizing: auto;
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+.register-new-food input {
+  font-size: 1rem;
+  height: min-content;
+  width: 60px;
+}
+
+.register-new-food:first-of-type input{
+  width: 100%;
+}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let's Count it</title>
+    <link rel="stylesheet" href="CSSs/loginPage.css" />
+    <link rel="stylesheet" href="CSSs/mainPage.css" />
+    <link rel="stylesheet" href="CSSs/userInfo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Login Page -->
+    <div class="loginPage hidden">
+      <div class="text-section">
+        <h1>Let's Count it!</h1>
+        <h2>Created by Petar Kolev</h2>
+      </div>
+
+      <div class="userLoginForm">
+        <form action="">
+          <input type="text" class="inputField email" placeholder="Email" />
+          <input
+            type="password"
+            class="inputField pass"
+            placeholder="Password"
+          />
+          <label class="showPassword">
+            <input type="checkbox" id="showPass" /> Show Password
+          </label>
+        </form>
+      </div>
+
+      <button class="start-counting">Start the counting now!</button>
+
+      <footer>
+        <img src="PNGs/facebook.png" alt="facebook.icon" />
+        <img src="PNGs/insta.png" alt="instagram.icon" />
+        <img src="PNGs/mail.png" alt="mail.icon" />
+      </footer>
+    </div>
+
+    <!-- Main Page (hidden initially) -->
+    <div class="mainPage">
+      <header>
+        <div class="header-content">
+          <h1>Let's count it, <span class="accountName">Petar</span>!</h1>
+          <img src="PNGs/UserIcon.png" alt="userIcon" class="user-icon" />
+        </div>
+      </header>
+
+      <button class="backToLogin">Back to login!</button>
+
+      <div class="mainPage-sections">
+        <div class="left-section mainSec">
+          <div id="intakeTracker">
+            <!-- Calorie Progress (Circular Bar) -->
+            <div class="calorie-progress">
+              <div class="circle-container">
+                <div class="circle">
+                  <span id="caloriePercentage">0%</span>
+                </div>
+              </div>
+            </div>
+            <div class="calorie-info">
+              <p>Calories:</p>
+              <p>
+                <span id="progress-bar-calorie-consumed">0</span>/<span
+                  id="progress-bar-calorie-target"
+                  >0</span
+                >
+              </p>
+            </div>
+
+            <!-- Nutrient Progress Bars -->
+            <div class="nutrient">
+              <p>
+                Protein: <span id="progress-bar-protein-consumed">0</span>/<span
+                  id="progress-bar-protein-target"
+                  >0</span
+                >
+              </p>
+              <div class="progress-bar">
+                <div class="progress" id="proteinProgress"></div>
+              </div>
+            </div>
+            <div class="nutrient">
+              <p>
+                Carbs: <span id="progress-bar-carbs-consumed">0</span>/<span
+                  id="progress-bar-carbs-target"
+                  >0</span
+                >
+              </p>
+              <div class="progress-bar">
+                <div class="progress" id="carbsProgress"></div>
+              </div>
+            </div>
+            <div class="nutrient">
+              <p>
+                Fats: <span id="progress-bar-fats-consumed">0</span>/<span
+                  id="progress-bar-fats-target"
+                  >0</span
+                >
+              </p>
+              <div class="progress-bar">
+                <div class="progress" id="fatsProgress"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-section mainSec">
+          <!-- Show/Register meal buttons -->
+          <div class="control-meals">
+            <button id="openListOfMeals">Add meal</button>
+            <button id="openRegisterFood">Register new meal</button>
+          </div>
+
+          <!-- Showing meal the user has consumed -->
+          <div class="show-meals-consumed"></div>
+
+          <!-- Giving the type of the meal + closing button -->
+          <div class="detailed-div hidden">
+            <div class="type-of-food-container">
+              <p>Adding:</p>
+              <select>
+                <option value="breakfast">Breakfast</option>
+                <option value="breakfast">Lunch</option>
+                <option value="breakfast">Dinner</option>
+                <option value="breakfast">Snack</option>
+              </select>
+            </div>
+            <p id="close-list-of-meals">Done!</p>
+
+            <!-- List of all the meals in the project -->
+            <div class="list-of-meals"></div>
+          </div>
+
+          <!-- Register meal tab  -->
+          <div class="register-new-food hidden">
+            <p>Name of the food</p>
+            <input name="new-food-name-input" type="text" />
+            <div class="register-block">
+              <p>Calories - </p>
+              <input name="new-food-calories-input" type="number" />
+            </div>
+            <div class="register-block">
+              <p>Protein - </p>
+              <input name="new-food-protein-input" type="number" />
+            </div>
+            <div class="register-block">
+              <p>Carbs - </p>
+              <input name="new-food-carbs-input" type="number" />
+            </div>
+            <div class="register-block">
+              <p>Fats - </p>
+              <input name="new-food-fats-input" type="number" />
+            </div>
+            <button id="register-new-food">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Information Section -->
+    <div class="userSection hidden">
+      <h2>User Information</h2>
+      <div class="mainSection">
+        <div class="user-leftSide">
+          <div class="infoBlock">
+            <p>Your name:</p>
+            <input
+              type="text"
+              class="userNameInput"
+              placeholder="Enter your name"
+            />
+          </div>
+          <div class="infoBlock">
+            <p>Your email:</p>
+            <input
+              type="text"
+              class="userEmail"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div class="infoBlock">
+            <p>Your pass:</p>
+            <input
+              type="password"
+              class="userPass"
+              placeholder="Enter your pass"
+            />
+          </div>
+          <div class="infoBlock">
+            <p>Your kilograms:</p>
+            <input
+              type="number"
+              class="userKilogramsInput"
+              placeholder="Enter your kilograms"
+            />
+          </div>
+          <div class="infoBlock">
+            <p>Your height:</p>
+            <input
+              type="number"
+              class="userHeightInput"
+              placeholder="Enter your height(cm)"
+            />
+          </div>
+          <div class="genderRadio">
+            <input type="radio" name="gender" id="male" />
+            <label for="threeMonths">Male</label>
+            <input type="radio" name="gender" id="female" />
+            <label for="sixMonths">Female</label>
+          </div>
+        </div>
+
+        <div class="user-rightSide">
+          <h3>Main target</h3>
+          <div class="bodyGoal">
+            <input type="radio" name="bodyGoal" id="buildMuscle" />
+            <label for="buildMuscle">Build Muscle</label>
+
+            <input type="radio" name="bodyGoal" id="maintain" />
+            <label for="Maintain">Maintain</label>
+
+            <input type="radio" name="bodyGoal" id="loseWeight" />
+            <label for="loseWeight">Lose Weight</label>
+          </div>
+
+          <div class="timeGoal">
+            <input type="radio" name="timeGoal" id="threeMonths" />
+            <label for="threeMonths">3 Months</label>
+            <input type="radio" name="timeGoal" id="sixMonths" />
+            <label for="sixMonths">+6 Months</label>
+          </div>
+          <button id="calculateBtn">Calculate!</button>
+          <div class="targets">
+            <h4 id="calTarget">Calories: <span id="calTargetNum">0</span></h4>
+            <div class="targets-bottom">
+              <h4>Protein: <span id="proteinTargetNum">0</span></h4>
+              <h4>Carbohydrates: <span id="carbsTargetNum">0</span></h4>
+              <h4>Fats: <span id="fatsTargetNum">0</span></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="close-userSection">Close</button>
+        <button class="saveBtn">Save</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

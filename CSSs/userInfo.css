@@ -1,0 +1,101 @@
+.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.userSection {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 700px;
+  background-color: white;
+  box-shadow: 0px 0px 30px 35px rgba(20, 6, 6, 0.2);
+  border-radius: 10px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  align-items: center;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+}
+
+.userSection h2 {
+  font-size: 3rem;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  color: rgb(0, 0, 0);
+  padding-top: 1rem;
+}
+
+.userSection .mainSection {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  padding: 20px;
+}
+
+.user-leftSide {
+  flex: 1;
+}
+
+.user-leftSide {
+  align-content: center;
+}
+
+.user-leftSide p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: -0.25rem;
+  margin-top: 1rem;
+}
+
+.user-leftSide input {
+  width: 170px;
+  height: 30px;
+  text-align: center;
+}
+
+.user-leftSide input[name="gender"]{
+  width: 20px;
+  padding-top: 10px;
+}
+
+.user-rightSide {
+  flex: 2;
+  display: inline-block;
+  background-color: rgb(239, 209, 154);
+}
+
+.user-rightSide h3 {
+  font-size: 2.5rem;
+}
+
+.bodyGoal {
+  margin: 1rem;
+}
+.bodyGoal label {
+  font-size: 1.5rem;
+  padding: 1rem;
+  font-weight: 400;
+  margin-top: 2rem;
+}
+
+.timeGoal {
+  margin: 0.5rem;
+}
+
+.targets {
+  margin-top: 2.25rem;
+}
+
+.targets-bottom {
+  display: inline-flex;
+}
+
+#calTargetNum {
+  font-size: 3.75rem;
+  margin: auto 0;
+}
+
+.targets span {
+  font-size: 3rem;
+}

@@ -1,0 +1,78 @@
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; /* Space between title section and navbar items */
+    align-items: center;
+    padding: 0 2rem; /* Add consistent padding on left and right */
+    background-color: antiquewhite;
+    position: sticky;
+    top: 0;
+    height: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+  }
+  
+  .title-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Space between logo and title */
+  }
+  
+  .title-section img {
+    margin-left: 0; /* Remove unnecessary margin */
+    width: 50px; /* Adjust logo size */
+  }
+  
+  .navbar-items {
+    display: flex;
+    gap: 2rem; /* Space between navbar items */
+  }
+  
+  .navbar-items a {
+    text-decoration: none;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: black;
+    transition: color 0.3s ease; /* Smooth color change on hover */
+  }
+  
+  .navbar-items a:hover {
+    color: darkorange;
+  }
+  
+  /* Media Query for Tablet Screens */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column; /* Stack title section and navbar items */
+      padding: 1rem;
+    }
+  
+    .navbar-items {
+      flex-direction: column; /* Stack navbar links vertically */
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+  
+    .navbar-items a {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Media Query for Mobile Screens */
+  @media (max-width: 480px) {
+    .navbar-items {
+      gap: 0.5rem; /* Reduce gap for smaller screens */
+    }
+  
+    .navbar-items a {
+      font-size: 0.9rem;
+    }
+  
+    .title-section img {
+      width: 40px; /* Adjust logo size for smaller screens */
+    }
+  
+    h1 {
+      font-size: 1.5rem;
+    }
+  }
+  

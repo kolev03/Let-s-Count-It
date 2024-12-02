@@ -1,0 +1,144 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: rgb(255, 190, 70);
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.hidden {
+  opacity: 0;
+  display: none;
+  transition: opacity 0.5s ease;
+}
+
+.loginPage {
+  text-align: center;
+  background-color: orange;
+  background: linear-gradient(orange, rgb(255, 190, 70));
+  height: 100vh;
+  width: 100%;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.loginPage h1,
+.loginPage h2 {
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-size: 1000%;
+  font-style: normal;
+  color: white;
+  text-shadow: 4px 1px 14px rgba(0, 0, 0, 0.3);
+  padding-top: 5rem;
+  transition: 0.3s ease;
+}
+
+.loginPage h1:hover {
+  font-size: 1150%;
+  transition: 0.3s ease;
+  text-shadow: 4px 20px 20px rgba(0, 0, 0, 0.3);
+}
+
+.loginPage h2 {
+  font-weight: 500;
+  font-size: 2rem;
+  padding-top: 0rem;
+  margin-top: -3rem;
+}
+
+.userLoginForm {
+  width: 25rem;
+  margin: 2rem auto;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginPage .inputField {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 1rem;
+}
+
+.loginPage .inputField::placeholder {
+  color: #bbb;
+}
+
+.loginPage .showPassword {
+  display: flex;
+  align-items: center;
+  font-family: "Funnel Sans", sans-serif;
+  font-size: 0.9rem;
+  color: white;
+  text-shadow: 7px 2px 14px rgba(0, 0, 0, 0.3);
+  margin-top: 0.5rem;
+}
+
+.loginPage input[type="checkbox"] {
+  margin-right: 0.2rem;
+}
+
+.loginPage .start-counting {
+  background-color: transparent;
+  font-size: 2rem;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-optical-sizing: auto;
+  color: white;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: font-size 0.3s ease; 
+}
+
+.loginPage .start-counting::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s ease; 
+}
+
+.loginPage .start-counting:hover {
+  font-size: 2.25rem; 
+}
+
+.loginPage .start-counting:hover::after {
+  width: 100%; 
+}
+
+.loginPage footer {
+  margin: 4rem auto;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding-bottom: 1rem;
+  background-color: rgb(255, 190, 70);
+}
+
+.loginPage img {
+  background-color: rgb(255, 190, 70);
+  width: 34px;
+  color: white;
+  cursor: pointer;
+}
+
+
+
