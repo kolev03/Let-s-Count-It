@@ -94,6 +94,7 @@ function loadAccounts() {
       fatsConsumedUser: 0,
       carbsConsumedUser: 0,
       proteinConsumedUser: 0,
+      consumedMealsUser: "",
     },
     {
       email: "guest@123",
@@ -110,6 +111,7 @@ function loadAccounts() {
       fatsConsumedUser: 0,
       carbsConsumedUser: 0,
       proteinConsumedUser: 0,
+      consumedMealsUser: "",
     },
   ];
   const storedAccounts = localStorage.getItem("accounts");
@@ -264,6 +266,8 @@ const updateUI = function () {
   progressBarProteinConsumed.textContent = currentUser.proteinConsumedUser;
   progressBarCarbsConsumed.textContent = currentUser.carbsConsumedUser;
   progressBarFatsConsumed.textContent = currentUser.fatsConsumedUser;
+
+  consumedMealsList.innerHTML = currentUser.consumedMealsUser;
 };
 
 // Login logic
@@ -337,6 +341,8 @@ function updateAccountData() {
     currentUser.kilograms = Number(
       document.querySelector(".userKilogramsInput").value
     );
+    currentUser.pass = document.querySelector(".userPass").value;
+    currentUser.email = document.querySelector(".userEmail").value;
     currentUser.calorieGoalUser = Number(calTarget.textContent);
     currentUser.proteinGoalUser = Number(proteinTarget.textContent);
     currentUser.fatsGoalUser = Number(fatsTarget.textContent);
@@ -362,6 +368,7 @@ function showListOfMeals() {
   });
   document.querySelector(".detailed-div").classList.toggle("hidden");
   document.querySelector(".show-meals-consumed").classList.toggle("hidden");
+  switchPages(".detailed-div");
 
   once = false;
 
@@ -451,7 +458,9 @@ function addMeal(name) {
           
   `;
   i++;
-  consumedMealsList.innerHTML += newMeal;
+
+  currentUser.consumedMealsUser += newMeal;
+  consumedMealsList.innerHTML = currentUser.consumedMealsUser;
   updateUI();
 }
 
