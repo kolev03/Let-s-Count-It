@@ -94,7 +94,7 @@ function loadAccounts() {
       fatsConsumedUser: 0,
       carbsConsumedUser: 0,
       proteinConsumedUser: 0,
-      consumedMealsUser: "",
+      consumedMealsUser: [],
     },
     {
       email: "guest@123",
@@ -111,7 +111,7 @@ function loadAccounts() {
       fatsConsumedUser: 0,
       carbsConsumedUser: 0,
       proteinConsumedUser: 0,
-      consumedMealsUser: "",
+      consumedMealsUser: [],
     },
   ];
   const storedAccounts = localStorage.getItem("accounts");
@@ -367,8 +367,6 @@ function showListOfMeals() {
             </div>`;
   });
   document.querySelector(".detailed-div").classList.toggle("hidden");
-  document.querySelector(".show-meals-consumed").classList.toggle("hidden");
-  switchPages(".detailed-div");
 
   once = false;
 
@@ -380,31 +378,52 @@ function showListOfMeals() {
 function removeMeal(id) {
   const divToRemove = document.getElementById(id);
 
-  const mealName = divToRemove.querySelector(".meal-name").textContent;
-  const mealToRemove = storedMeals.find((meal) => meal.name === mealName);
-
-  if (mealToRemove) {
-    currentUser.caloriesConsumedUser -= mealToRemove.calories;
-    currentUser.proteinConsumedUser -= mealToRemove.protein;
-    currentUser.carbsConsumedUser -= mealToRemove.carbs;
-    currentUser.fatsConsumedUser -= mealToRemove.fats;
-
-    currentUser.caloriesConsumedUser = Math.max(
-      0,
-      currentUser.caloriesConsumedUser
-    );
-    currentUser.proteinConsumedUser = Math.max(
-      0,
-      currentUser.proteinConsumedUser
-    );
-    currentUser.carbsConsumedUser = Math.max(0, currentUser.carbsConsumedUser);
-    currentUser.fatsConsumedUser = Math.max(0, currentUser.fatsConsumedUser);
-
-    updateUI();
+  if (!divToRemove) {
+    console.error(`Meal with ID "${id}" not found.`);
+    return;
   }
 
-  divToRemove.remove();
+  const mealName = divToRemove.querySelector(".meal-name").textContent;
+
+  const mealIndex = currentUser.consumedMealsUser.findIndex((mealHTML) => {
+    const parser = new DOMParser();
+    const mealElement = parser.parseFromString(mealHTML, "text/html");
+    const parsedMealName = mealElement.querySelector(".meal-name")?.textContent;
+    return parsedMealName === mealName;
+  });
+
+  if (mealIndex !== -1) {
+    currentUser.consumedMealsUser.splice(mealIndex, 1);
+
+    const mealToRemove = storedMeals.find((meal) => meal.name === mealName);
+    if (mealToRemove) {
+      currentUser.caloriesConsumedUser -= mealToRemove.calories;
+      currentUser.proteinConsumedUser -= mealToRemove.protein;
+      currentUser.carbsConsumedUser -= mealToRemove.carbs;
+      currentUser.fatsConsumedUser -= mealToRemove.fats;
+
+      currentUser.caloriesConsumedUser = Math.max(
+        0,
+        currentUser.caloriesConsumedUser
+      );
+      currentUser.proteinConsumedUser = Math.max(
+        0,
+        currentUser.proteinConsumedUser
+      );
+      currentUser.carbsConsumedUser = Math.max(0, currentUser.carbsConsumedUser);
+      currentUser.fatsConsumedUser = Math.max(0, currentUser.fatsConsumedUser);
+    }
+
+    updateUI();
+
+    divToRemove.remove();
+  } else {
+    console.error(`Meal "${mealName}" not found in consumed meals.`);
+  }
 }
+
+
+let i = 0;
 
 function addMeal(name) {
   const currentMeal = storedMeals.find((meal) => {
@@ -459,8 +478,8 @@ function addMeal(name) {
   `;
   i++;
 
-  currentUser.consumedMealsUser += newMeal;
-  consumedMealsList.innerHTML = currentUser.consumedMealsUser;
+  currentUser.consumedMealsUser.push(newMeal);
+  consumedMealsList.innerHTML = currentUser.consumedMealsUser.join("");
   updateUI();
 }
 
@@ -510,16 +529,16 @@ function registerNewFood() {
 
 function toggleVisibility(sectionToShow) {
   const sections = [
-    document.querySelector(".detailed-div"),
-    document.querySelector(".show-meals-consumed"),
-    document.querySelector(".register-new-food"),
+    document.querySelector(".detailed-div"), // Meals list section
+    document.querySelector(".show-meals-consumed"), // Consumed meals section
+    document.querySelector(".register-new-food"), // Register new food section
   ];
 
   sections.forEach((section) => {
     if (section === sectionToShow) {
-      section.classList.remove("hidden");
+      section.classList.remove("hidden"); // Show the requested section
     } else {
-      section.classList.add("hidden");
+      section.classList.add("hidden"); // Hide all other sections
     }
   });
 }
@@ -558,15 +577,13 @@ saveBtn.addEventListener("click", function () {
   updateUI();
 });
 
-let i = 0;
-
 openListOfMealsBtn.addEventListener("click", function () {
   showListOfMeals();
   toggleVisibility(document.querySelector(".detailed-div"));
 });
 
 closeListOfMealsBtn.addEventListener("click", function () {
-  toggleVisibility(document.querySelector(".show-meals-consumed")); // Show Consumed Meals
+  toggleVisibility(document.querySelector(".show-meals-consumed"));
 });
 
 registerNewFoodBtn.addEventListener("click", function () {
