@@ -236,7 +236,9 @@ const updateUI = function () {
   const calorieText = document.querySelector("#caloriePercentage");
   calorieCircle.style.background = `conic-gradient(orange ${caloriePercent}%, #eaeaea ${caloriePercent}%)`;
   calorieText.textContent =
-    currentUser.calorieGoalUser === 0 ? "-" : `${caloriePercent.toFixed(0)}%`;
+    currentUser.calorieGoalUser === 0
+      ? "Count it!"
+      : `${caloriePercent.toFixed(0)}%`;
 
   const proteinPercent = calculatePercentage(
     currentUser.proteinConsumedUser,
@@ -292,33 +294,82 @@ function handleLogin() {
 function calculateCalories() {
   const userHeight = Number(document.querySelector(".userHeightInput").value);
   const userKilos = Number(document.querySelector(".userKilogramsInput").value);
-  const BMR =
-    10 * userKilos +
-    6.25 * userHeight -
-    5 * 25 +
-    (maleRadio.checked ? 5 : -161);
-  const activityLevel = 1.55;
-  const TDEE = BMR * activityLevel;
+  const maleRadio = document.querySelector("#male");
+  const femaleRadio = document.querySelector("#female");
+  const buildMuscle = document.querySelector("#buildMuscle");
+  const loseWeight = document.querySelector("#loseWeight");
+  const maintainWeight = document.querySelector("#maintain");
+  const threeMonths = document.querySelector("#threeMonths");
+  const sixMonths = document.querySelector("#sixMonths");
+
+  // Ensure gender is selected and calculate BMR
+  let BMR;
+  if (maleRadio.checked) {
+    BMR = 10 * userKilos + 6.25 * userHeight - 5 * 25 + 5; // Male BMR calculation
+  } else if (femaleRadio.checked) {
+    BMR = 10 * userKilos + 6.25 * userHeight - 5 * 25 - 161; // Female BMR calculation
+  } else {
+    alert("Error: Please select a gender.");
+    return;
+  }
+
+  const activityLevel = 1.55; // Moderate activity level
+  const TDEE = BMR * activityLevel; // Total Daily Energy Expenditure (TDEE)
 
   let calTargetValue, proteinTargetValue, fatsTargetValue, carbsTargetValue;
 
+  // Determine calorie deficit for weight loss depending on time goal
+  let weightLossDeficit = 0;
+
+  // For 3 months, apply a larger deficit (Rapid Weight Loss)
+  if (threeMonths.checked) {
+    weightLossDeficit = 700; // Larger deficit for rapid fat loss
+  } 
+  // For 6 months, apply a smaller deficit (Slow Weight Loss)
+  else if (sixMonths.checked) {
+    weightLossDeficit = 400; // Smaller deficit for gradual fat loss
+  } 
+  // Alert if time goal is not selected
+  else {
+    alert("Error: Please select a time goal.");
+    return;
+  }
+
+  // Adjust calorie target based on the body goal
   if (buildMuscle.checked) {
-    calTargetValue = TDEE * 1.1;
+    // Muscle building goal: Slight calorie surplus for muscle gain
+    calTargetValue = TDEE * 1.1; 
     fatsTargetValue = userKilos;
     proteinTargetValue = userKilos * 2.2;
-  } else if (loseWeight.checked) {
-    calTargetValue = TDEE - 500;
-    fatsTargetValue = Math.trunc(0.25 * calTargetValue) / 9;
-    proteinTargetValue = userKilos * 2.2;
-  } else if (maintainWeight.checked) {
-    calTargetValue = TDEE;
+  } 
+  else if (loseWeight.checked) {
+    // Weight loss goal: Apply deficit
+    calTargetValue = TDEE - weightLossDeficit;
+    fatsTargetValue = Math.trunc(0.25 * calTargetValue) / 9; // 25% of calories from fats
+    proteinTargetValue = userKilos * 2.2; // High protein intake for muscle retention
+  } 
+  else if (maintainWeight.checked) {
+    // Maintenance goal: No deficit or surplus, just maintain current weight
+    calTargetValue = TDEE; 
     fatsTargetValue = userKilos;
-    proteinTargetValue = userKilos * 1.6;
-  } else {
+    proteinTargetValue = userKilos * 1.6; // Moderate protein for maintenance
+  } 
+  else {
     alert("Error: Please select a body goal.");
     return;
   }
 
+  // Calculate carbohydrates from the remaining calories after fats and protein
+  carbsTargetValue = Math.trunc(
+    (calTargetValue - (fatsTargetValue * 9 + proteinTargetValue * 4)) / 4
+  );
+
+  // Calculate carbs based on remaining calories after fats and protein
+  carbsTargetValue = Math.trunc(
+    (calTargetValue - (fatsTargetValue * 9 + proteinTargetValue * 4)) / 4
+  );
+
+  // Calculate carbs based on remaining calories after fats and protein
   carbsTargetValue = Math.trunc(
     (calTargetValue - (fatsTargetValue * 9 + proteinTargetValue * 4)) / 4
   );
@@ -410,7 +461,10 @@ function removeMeal(id) {
         0,
         currentUser.proteinConsumedUser
       );
-      currentUser.carbsConsumedUser = Math.max(0, currentUser.carbsConsumedUser);
+      currentUser.carbsConsumedUser = Math.max(
+        0,
+        currentUser.carbsConsumedUser
+      );
       currentUser.fatsConsumedUser = Math.max(0, currentUser.fatsConsumedUser);
     }
 
@@ -421,7 +475,6 @@ function removeMeal(id) {
     console.error(`Meal "${mealName}" not found in consumed meals.`);
   }
 }
-
 
 let i = 0;
 

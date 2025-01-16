@@ -16,6 +16,7 @@
   </head>
   <body>
     <!-- Login Page -->
+    <img class="pizza-1" src="PNGs/pizza.png" alt="" />
     <div class="loginPage">
       <div class="text-section">
         <h1>Let's Count it!</h1>
@@ -34,9 +35,8 @@
             <input type="checkbox" id="showPass" /> Show Password
           </label>
         </form>
+        <button class="start-counting">Start the counting now!</button>
       </div>
-
-      <button class="start-counting">Start the counting now!</button>
 
       <footer>
         <img src="PNGs/facebook.png" alt="facebook.icon" />
@@ -49,12 +49,14 @@
     <div class="mainPage hidden">
       <header>
         <div class="header-content">
+          <button class="backToLogin"><--Back to login!</button>
           <h1>Let's count it, <span class="accountName">Petar</span>!</h1>
-          <img src="PNGs/UserIcon.png" alt="userIcon" class="user-icon" />
+          <div class="header-content-user-div">
+            <p>User Info</p>
+            <img src="PNGs/UserIcon.png" alt="userIcon" class="user-icon" />
+          </div>
         </div>
       </header>
-
-      <button class="backToLogin">Back to login!</button>
 
       <div class="mainPage-sections">
         <div class="left-section mainSec">
@@ -69,44 +71,52 @@
             </div>
             <div class="calorie-info">
               <p>Calories:</p>
-              <p>
-                <span id="progress-bar-calorie-consumed">0</span>/<span
-                  id="progress-bar-calorie-target"
+              <p class="calories-header">
+                <span id="progress-bar-calorie-consumed" class="consumed"
                   >0</span
-                >
+                >/<span id="progress-bar-calorie-target" class="target">0</span>
               </p>
             </div>
 
             <!-- Nutrient Progress Bars -->
             <div class="nutrient">
-              <p>
-                Protein: <span id="progress-bar-protein-consumed">0</span>/<span
-                  id="progress-bar-protein-target"
-                  >0</span
-                >
-              </p>
+              <div class="nutrient-header">
+                <span class="left-side-nutrient">Protein:</span>
+                <span class="right-side-nutrient">
+                  <span id="progress-bar-protein-consumed" class="consumed"
+                    >0</span
+                  >/<span id="progress-bar-protein-target" class="target"
+                    >0</span
+                  >
+                </span>
+              </div>
               <div class="progress-bar">
                 <div class="progress" id="proteinProgress"></div>
               </div>
             </div>
+
             <div class="nutrient">
-              <p>
-                Carbs: <span id="progress-bar-carbs-consumed">0</span>/<span
-                  id="progress-bar-carbs-target"
-                  >0</span
-                >
-              </p>
+              <div class="nutrient-header">
+                <span class="left-side-nutrient">Carbs:</span>
+                <span class="right-side-nutrient">
+                  <span id="progress-bar-carbs-consumed" class="consumed"
+                    >0</span
+                  >/<span id="progress-bar-carbs-target" class="target">0</span>
+                </span>
+              </div>
               <div class="progress-bar">
                 <div class="progress" id="carbsProgress"></div>
               </div>
             </div>
+
             <div class="nutrient">
-              <p>
-                Fats: <span id="progress-bar-fats-consumed">0</span>/<span
-                  id="progress-bar-fats-target"
-                  >0</span
-                >
-              </p>
+              <div class="nutrient-header">
+                <span class="left-side-nutrient">Fats:</span>
+                <span class="right-side-nutrient">
+                  <span id="progress-bar-fats-consumed" class="consumed">0</span
+                  >/<span id="progress-bar-fats-target" class="target">0</span>
+                </span>
+              </div>
               <div class="progress-bar">
                 <div class="progress" id="fatsProgress"></div>
               </div>
@@ -126,16 +136,20 @@
 
           <!-- Giving the type of the meal + closing button -->
           <div class="detailed-div hidden">
-            <div class="type-of-food-container">
-              <p>Adding:</p>
-              <select>
-                <option value="breakfast">Breakfast</option>
-                <option value="breakfast">Lunch</option>
-                <option value="breakfast">Dinner</option>
-                <option value="breakfast">Snack</option>
-              </select>
+            <div class="detailed-div-header">
+              <div class="type-of-food-container">
+                <p>Adding:</p>
+                <select>
+                  <option value="breakfast">Breakfast</option>
+                  <option value="breakfast">Lunch</option>
+                  <option value="breakfast">Dinner</option>
+                  <option value="breakfast">Snack</option>
+                </select>
+              </div>
+              <div>
+                <p id="close-list-of-meals">Done!</p>
+              </div>
             </div>
-            <p id="close-list-of-meals">Done!</p>
 
             <!-- List of all the meals in the project -->
             <div class="list-of-meals"></div>
@@ -146,19 +160,19 @@
             <p>Name of the food</p>
             <input name="new-food-name-input" type="text" />
             <div class="register-block">
-              <p>Calories - </p>
+              <p>Calories -</p>
               <input name="new-food-calories-input" type="number" />
             </div>
             <div class="register-block">
-              <p>Protein - </p>
+              <p>Protein -</p>
               <input name="new-food-protein-input" type="number" />
             </div>
             <div class="register-block">
-              <p>Carbs - </p>
+              <p>Carbs -</p>
               <input name="new-food-carbs-input" type="number" />
             </div>
             <div class="register-block">
-              <p>Fats - </p>
+              <p>Fats -</p>
               <input name="new-food-fats-input" type="number" />
             </div>
             <button id="register-new-food">Register</button>

@@ -1,19 +1,21 @@
 .mainPage {
-  background-color: orange;
+  background: linear-gradient(#ffa601, #fa812f);
   width: 100%;
-  height: 100vh;
+  height: 100%;
 }
 
 header {
-  background-color: orange;
+  background-color: transparent;
   padding: 1rem;
 }
 
 .header-content {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
+  text-align: center;
+  justify-items: center;
 }
 
 .user-icon {
@@ -37,10 +39,31 @@ header {
   opacity: 1; /* Show text on hover */
 }
 
+.header-content-user-div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  color: white;
+  padding-top: 30px;
+}
+
+.backToLogin {
+  background-color: transparent;
+  font-size: 1.5rem;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding-top: 30px;
+}
+
+
 .mainPage h1 {
   font-family: "Edu AU VIC WA NT Pre", cursive;
   font-weight: 700;
-  font-size: 2.5rem;
+  font-size: 2.75rem;
   margin: 0; /* Remove extra margin */
   color: white;
   text-shadow: 4px 1px 8px rgba(0, 0, 0, 0.3);
@@ -126,13 +149,61 @@ header {
 }
 
 .calorie-info {
-  flex: 1;
-  margin-top: -2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1.25rem;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.calorie-info .calorie-consumed,
+.calorie-info .calorie-target {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #f75c1f; /* Red-orange color for calories */
+}
+
+#progress-bar-calorie-target {
+  margin-left: 3px;
+}
+
+.calorie-info .calorie-target {
+  font-size: 1rem;
+  color: gray;
 }
 
 .nutrient {
-  text-align: center;
   width: 100%;
+}
+
+.nutrient-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; /* Align text based on the baseline */
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.left-side-nutrient {
+  font-weight: bold;
+}
+
+.right-side-nutrient {
+  display: flex;
+  align-items: baseline; /* Ensure alignment of numbers */
+  gap: 0.15rem; /* Add spacing between consumed and target numbers */
+}
+
+.consumed {
+  font-size: 1.5rem; /* Bigger font size for consumed */
+  font-weight: bold;
+}
+
+.target {
+  font-size: 1rem; /* Smaller font size for the target */
+  font-weight: normal;
+  opacity: 0.8; /* Slight transparency */
 }
 
 .progress-bar {
@@ -146,10 +217,95 @@ header {
 
 .progress {
   height: 100%;
-  background-color: orange;
   width: 0%;
   transition: width 0.5s ease;
   border-radius: 10px;
+  background: conic-gradient(
+    #f75c1f 0% 0%, /* Starting color for calories */
+    #f7e0c3 0% 100% /* Lighter shade when filled */
+  );
+}
+
+
+.calories-header{
+  justify-content: space-evenly;
+}
+
+#proteinProgress {
+  height: 100%;
+  background: linear-gradient(90deg, #0056ff, #4fc3f7); /* Blue gradient */
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
+
+#carbsProgress {
+  height: 100%;
+  background: linear-gradient(90deg, #007f00, #00ff00); /* Green gradient */
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
+
+#fatsProgress {
+  height: 100%;
+  background: linear-gradient(90deg, #ffc800, #ffeb3b); /* Yellow gradient */
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+}
+
+.progress-protein {
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+  background: conic-gradient(
+    #007bff 0% 0%, /* Starting color for protein */
+    #80c4ff 0% 100% /* Lighter blue when filled */
+  );
+}
+
+/* Carbs Bar */
+.progress-carbs {
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+  background: conic-gradient(
+    #28a745 0% 0%, /* Starting color for carbs */
+    #a2d6a6 0% 100% /* Lighter green when filled */
+  );
+}
+
+/* Fats Bar */
+.progress-fats {
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 10px;
+  background: conic-gradient(
+    #fa812f 0% 0%, /* Starting color for fats */
+    #f8d59a 0% 100% /* Lighter yellow when filled */
+  );
+}
+
+
+#progress-bar-calorie-consumed {
+  margin: 0 5px;
+  color: rgb(215, 143, 8);
+}
+
+#progress-bar-protein-consumed {
+  color: #0056ff; /* Blue */
+}
+
+#progress-bar-carbs-consumed {
+  color: #007f00; /* Green */
+}
+
+#progress-bar-fats-consumed {
+  color: #ff0000; /* Yellow */
 }
 
 .control-meals {
@@ -204,7 +360,7 @@ header {
 }
 
 .list-of-meals {
-  max-height: 460px;
+  max-height: 500px;
   overflow-y: auto;
 }
 
@@ -250,8 +406,15 @@ header {
   margin-left: 2rem;
 }
 
+
 .detailed-div {
-  background: linear-gradient(orange, rgb(255, 206, 116))
+  background: linear-gradient(orange, rgb(255, 206, 116));
+}
+
+.detailed-div-header {
+  display: flex;
+  justify-content: space-evenly;
+
 }
 
 .list-of-meals {
