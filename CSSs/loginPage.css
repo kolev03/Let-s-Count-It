@@ -6,15 +6,15 @@
 
 /* Styles for the whole project */
 
-body{
+body {
   background-color: #fa812f;
 }
 ::-webkit-scrollbar {
-  width: 12px; 
+  width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ffffff; 
+  background-color: #ffffff;
 }
 
 ::-webkit-scrollbar-track {
@@ -28,14 +28,13 @@ body{
 }
 
 .fade-in {
-    display: block;
-    opacity: 1;
+  display: block;
+  opacity: 1;
 }
 
 .fade-out {
   opacity: 0;
 }
-
 
 .loginPage {
   text-align: center;
@@ -160,11 +159,39 @@ body{
 }
 
 .pizza-1 {
-  position:fixed;
+  position: fixed;
   width: 20%;
   bottom: -14%;
   left: -3%;
   color: white;
   overflow: hidden;
   display: none;
+}
+
+@media (max-width: 1800px) {
+  .loginPage h1 {
+    font-size: 1000%;
+    margin-bottom: 100px;
+  }
+  .loginPage h1:hover {
+    font-size: 1050%;
+  }
+}
+
+@media (max-width: 1100px) {
+  .loginPage h1 {
+    font-size: 600%;
+  }
+  .loginPage h1:hover {
+    font-size: 600%;
+  }
+}
+
+@media (max-width: 550px) {
+  .loginPage h1 {
+    font-size: 400%;
+  }
+  .loginPage h1:hover {
+    font-size: 400%;
+  }
 }
