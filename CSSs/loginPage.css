@@ -185,6 +185,9 @@ body {
   .loginPage h1:hover {
     font-size: 600%;
   }
+  .loginPage {
+    background: linear-gradient(#ffa601, #fa812f);
+  }
 }
 
 @media (max-width: 550px) {

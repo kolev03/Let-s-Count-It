@@ -498,3 +498,32 @@ header {
 .register-new-food:first-of-type input{
   width: 100%;
 }
+
+@media(max-width:1360px){
+  .left-section,
+  .right-section{
+    width: 70%;
+    height: max-content;
+  }
+}
+
+@media(max-width: 900px){
+  .header-content{
+    display: grid;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media(max-width: 682px){
+  .left-section,
+  .right-section{
+    width: 100%;
+    height: max-content;
+  }
+
+  .header-content h1{
+    font-size: 2rem;
+    margin-bottom: -1.5rem;
+  }
+}
