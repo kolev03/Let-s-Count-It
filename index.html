@@ -211,7 +211,7 @@
             />
           </div>
           <div class="infoBlock">
-            <p>Your kilograms:</p>
+            <p id="killograms-input-text">Your kilograms:</p>
             <input
               type="number"
               class="userKilogramsInput"
@@ -237,21 +237,29 @@
         <div class="user-rightSide">
           <h3>Main target</h3>
           <div class="bodyGoal">
-            <input type="radio" name="bodyGoal" id="buildMuscle" />
-            <label for="buildMuscle">Build Muscle</label>
-
-            <input type="radio" name="bodyGoal" id="maintain" />
-            <label for="Maintain">Maintain</label>
-
-            <input type="radio" name="bodyGoal" id="loseWeight" />
-            <label for="loseWeight">Lose Weight</label>
+            <div>
+              <input type="radio" name="bodyGoal" id="buildMuscle" />
+              <label for="buildMuscle">Build Muscle</label>
+            </div>
+            <div>
+              <input type="radio" name="bodyGoal" id="maintain" />
+              <label for="Maintain">Maintain</label>
+            </div>
+            <div>
+              <input type="radio" name="bodyGoal" id="loseWeight" />
+              <label for="loseWeight">Lose Weight</label>
+            </div>
           </div>
 
           <div class="timeGoal">
-            <input type="radio" name="timeGoal" id="threeMonths" />
-            <label for="threeMonths">3 Months</label>
-            <input type="radio" name="timeGoal" id="sixMonths" />
-            <label for="sixMonths">+6 Months</label>
+            <div>
+              <input type="radio" name="timeGoal" id="threeMonths" />
+              <label for="threeMonths">3 Months</label>
+            </div>
+            <div>
+              <input type="radio" name="timeGoal" id="sixMonths" />
+              <label for="sixMonths">+6 Months</label>
+            </div>
           </div>
           <button id="calculateBtn">Calculate!</button>
           <div class="targets">

@@ -59,7 +59,6 @@ header {
   padding-top: 30px;
 }
 
-
 .mainPage h1 {
   font-family: "Edu AU VIC WA NT Pre", cursive;
   font-weight: 700;
@@ -221,13 +220,13 @@ header {
   transition: width 0.5s ease;
   border-radius: 10px;
   background: conic-gradient(
-    #f75c1f 0% 0%, /* Starting color for calories */
-    #f7e0c3 0% 100% /* Lighter shade when filled */
+    #f75c1f 0% 0%,
+    /* Starting color for calories */ #f7e0c3 0% 100%
+      /* Lighter shade when filled */
   );
 }
 
-
-.calories-header{
+.calories-header {
   justify-content: space-evenly;
 }
 
@@ -261,8 +260,9 @@ header {
   transition: width 0.5s ease;
   border-radius: 10px;
   background: conic-gradient(
-    #007bff 0% 0%, /* Starting color for protein */
-    #80c4ff 0% 100% /* Lighter blue when filled */
+    #007bff 0% 0%,
+    /* Starting color for protein */ #80c4ff 0% 100%
+      /* Lighter blue when filled */
   );
 }
 
@@ -273,8 +273,9 @@ header {
   transition: width 0.5s ease;
   border-radius: 10px;
   background: conic-gradient(
-    #28a745 0% 0%, /* Starting color for carbs */
-    #a2d6a6 0% 100% /* Lighter green when filled */
+    #28a745 0% 0%,
+    /* Starting color for carbs */ #a2d6a6 0% 100%
+      /* Lighter green when filled */
   );
 }
 
@@ -285,11 +286,11 @@ header {
   transition: width 0.5s ease;
   border-radius: 10px;
   background: conic-gradient(
-    #fa812f 0% 0%, /* Starting color for fats */
-    #f8d59a 0% 100% /* Lighter yellow when filled */
+    #fa812f 0% 0%,
+    /* Starting color for fats */ #f8d59a 0% 100%
+      /* Lighter yellow when filled */
   );
 }
-
 
 #progress-bar-calorie-consumed {
   margin: 0 5px;
@@ -354,7 +355,8 @@ header {
   height: auto;
 }
 
-.show-meals-consumed, .list-of-meals {
+.show-meals-consumed,
+.list-of-meals {
   max-height: 570px;
   overflow-y: auto;
 }
@@ -406,23 +408,54 @@ header {
   margin-left: 2rem;
 }
 
-
 .detailed-div {
   background: linear-gradient(orange, rgb(255, 206, 116));
 }
 
 .detailed-div-header {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  border-bottom: 2px solid white;
+}
 
+.type-of-food-container {
+  display: flex;
+  font-size: 1.5rem;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-weight: 600;
+  color: white;
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.type-of-food-container select {
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-family: "Edu AU VIC WA NT Pre", cursive;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+.type-of-food-container select:focus {
+  outline: none; /* Remove the outline */
+  border-color: #007bff; /* Add focus border color */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a focus shadow */
+}
+
+.type-of-food-container option {
+  background-color: black;
+  border: 1px solid;
+  transition: all 0.3s ease;
 }
 
 .list-of-meals {
-
   width: 100%;
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Four columns of equal width */
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   justify-content: center;
   align-items: center;
@@ -445,13 +478,13 @@ header {
 }
 
 .meal-list-name {
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-size: auto;
   font-style: italic;
   margin-top: -1rem;
 }
 
-#close-list-of-meals{
+#close-list-of-meals {
   font-family: "Edu AU VIC WA NT Pre", cursive;
   font-weight: 600;
   font-optical-sizing: auto;
@@ -464,7 +497,7 @@ header {
   transition: 0.3s ease;
 }
 
-#close-list-of-meals:hover{
+#close-list-of-meals:hover {
   font-size: 1.7rem;
   transition: 0.3s ease;
 }
@@ -476,12 +509,12 @@ header {
   margin: 0 auto;
 }
 
-.register-block{
+.register-block {
   display: flex;
   align-items: center;
 }
 
-.register-new-food p{
+.register-new-food p {
   font-family: "Edu AU VIC WA NT Pre", cursive;
   font-weight: 600;
   font-optical-sizing: auto;
@@ -495,35 +528,85 @@ header {
   width: 60px;
 }
 
-.register-new-food:first-of-type input{
+.register-new-food:first-of-type input {
   width: 100%;
 }
 
-@media(max-width:1360px){
+@media (max-width: 1360px) {
   .left-section,
-  .right-section{
-    width: 70%;
+  .right-section {
+    max-width: 100px;
     height: max-content;
   }
 }
 
-@media(max-width: 900px){
-  .header-content{
+@media (max-width: 900px) {
+
+  html, body {
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+  }
+
+  .left-section {
+    border-radius: 0;
+  }
+
+  .left-side-nutrient {
+    margin-left: 10px;
+  }
+  .header-content {
     display: grid;
     text-align: center;
     justify-content: center;
   }
+
+  .list-of-meals {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  ::-webkit-scrollbar {
+    width: 1px;
+  }
 }
 
-@media(max-width: 682px){
+@media (max-width: 682px) {
+
+  body{
+    width: 100%;
+  }
+
+
   .left-section,
-  .right-section{
+  .right-section {
     width: 100%;
     height: max-content;
+    padding: 20px 0;
   }
 
-  .header-content h1{
-    font-size: 2rem;
+  .header-content {
+    height: min-content;
+    padding: 0;
+    margin: auto;
+    width: 100%;
+    align-items: center;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
     margin-bottom: -1.5rem;
   }
+
+  .progress-bar {
+    margin: auto;
+    width: 90%;
+  }
+
+  .nutrient-header {
+    width: 90%;
+  }
+
+  .control-meals button {
+    line-height: 1;
+  }
 }
+
+

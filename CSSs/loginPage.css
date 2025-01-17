@@ -50,7 +50,7 @@ body {
   font-family: "Edu AU VIC WA NT Pre", cursive;
   font-optical-sizing: auto;
   font-weight: 700;
-  font-size: 1000%;
+  font-size: 1200%;
   font-style: normal;
   color: white;
   text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.3);
@@ -59,7 +59,7 @@ body {
 }
 
 .loginPage h1:hover {
-  font-size: 1150%;
+  font-size: 1300%;
   transition: 0.3s ease;
   text-shadow: 4px 20px 20px rgba(0, 0, 0, 0.3);
 }
@@ -185,12 +185,13 @@ body {
   .loginPage h1:hover {
     font-size: 600%;
   }
-  .loginPage {
+  .body {
     background: linear-gradient(#ffa601, #fa812f);
   }
 }
 
 @media (max-width: 550px) {
+  
   .loginPage h1 {
     font-size: 400%;
   }
