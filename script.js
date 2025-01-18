@@ -617,6 +617,7 @@ showPasswordBtn.addEventListener("change", function () {
 userIcon.addEventListener("click", function () {
   loadUserData();
   openSectionWithBlur(mainPage, userSection);
+  console.log(currentPage);
 });
 
 calculateBtn.addEventListener("click", calculateCalories);

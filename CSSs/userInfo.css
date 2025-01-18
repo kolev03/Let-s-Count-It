@@ -9,8 +9,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 900px;
-  height: 700px;
-  background-color: white;
+  height: min-content;
+  background: linear-gradient(#ffa601, #fa812f);
   box-shadow: 0px 0px 30px 35px rgba(20, 6, 6, 0.2);
   border-radius: 10px;
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -62,7 +62,7 @@
 .user-rightSide {
   flex: 2;
   display: inline-block;
-  background-color: rgb(239, 209, 154);
+  background: line;
 }
 
 .user-rightSide h3 {
@@ -83,6 +83,12 @@
   margin: 0.5rem;
 }
 
+.userSection hr{
+  height: 2px;
+  width: 70%;
+  margin: auto;
+}
+
 .targets {
   margin-top: 1.25rem;
 }
@@ -96,8 +102,29 @@
   margin: auto 0;
 }
 
+
 .targets span {
   font-size: 3rem;
+}
+
+.userSection button{ 
+    font-family: "Edu AU VIC WA NT Pre", cursive;
+    font-weight: 600;
+    font-optical-sizing: auto;
+    font-size: 1.5rem;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+    padding: 1rem;
+    width: fit-content;
+    margin: 0 auto;
+    transition: 0.3s ease;
+    background-color: transparent;
+    border: none
+}
+
+.userSection button:hover {
+  font-size: 1.7rem;
+  transition: 0.3s ease;
 }
 
 @media(max-width:955px){
@@ -136,19 +163,19 @@
   
 
   .user-rightSide h3{
-    font-size: 1.75rem;
+    font-size: 1.55rem;
   }
 
   .user-leftSide p{
     margin-top: 1.5rem;
   }
 
-  #calTarget{
-    margin-top: -40px;
-  }
-
   .targets h4{
     font-size: 0.75rem;
+  }
+
+  .targets h4 span{
+    font-size: 1.25rem;
   }
 
   .userSection h2{
@@ -156,6 +183,38 @@
   }
 
   .bodyGoal label[for="buildMuscle"]{
-    font-size: 1.35rem;
+    font-size: 1.25rem;
+  }
+
+  .targets-bottom{
+    display: flex;
+    flex-direction: column;
+    margin-top: -15px;
+  }
+
+  #calTarget p{
+    margin-bottom: -20px;
+  }
+}
+
+@media (max-width: 555px) {
+  .userSection{
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 100%;
+    padding: 0px;
+  }
+}
+
+
+@media (max-height: 690px){
+  .userSection h2{
+    padding-top: 40px;
+  }
+
+  .userSection .buttons{
+    margin: -50px 0 0 -180px;
   }
 }
