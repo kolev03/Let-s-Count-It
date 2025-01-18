@@ -309,6 +309,13 @@ header {
   color: #ff0000; /* Yellow */
 }
 
+.ai-section{
+  margin-top: 50px;
+  border: 1px solid orange;
+  width: 100%;
+
+}
+
 .control-meals {
   display: flex;
   justify-content: space-evenly;
